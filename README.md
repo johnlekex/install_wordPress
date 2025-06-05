@@ -9,3 +9,7 @@ chmod +x fixsql.sh
 ./fixsql.sh
 mysql -u root --password='re:St@rt!9' < /home/ec2-user/world.sql
 mysql -u root --password='re:St@rt!9'
+
+
+
+====================================================================================================
