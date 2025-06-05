@@ -13,3 +13,15 @@ mysql -u root --password='re:St@rt!9'
 
 
 ====================================================================================================
+
+=== MySQL 8.0 Installation Complete ===
+==================================================
+Root password: re:St@rt!9
+MySQL service is enabled and will start automatically on boot
+
+Useful commands:
+  Start MySQL:   sudo systemctl start mysqld
+  Stop MySQL:    sudo systemctl stop mysqld
+  Restart MySQL: sudo systemctl restart mysqld
+  Check status:  sudo systemctl status mysqld
+  Connect:       mysql -u root -p
