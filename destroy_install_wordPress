@@ -1,0 +1,126 @@
+#!/bin/bash
+
+set -e
+
+export AWS_PAGER=""
+
+REGION="us-west-2"
+VPC_NAME="WPVPC"
+RDS_INSTANCE_ID="wordpress-db"
+RDS_SUBNET_GROUP="wpvpc-private-subnet-group"
+RDS_SG_NAME="WPVPC-RDS-MySQL-SG"
+WEB_SG_NAME="WPVPC-WebSG"
+PUBLIC_SUBNET_NAME="WPVPC-PublicSubnet"
+PRIVATE_SUBNET_NAME="WPVPC-PrivateSubnet"
+PRIVATE_SUBNET_NAME2="WPVPC-PrivateSubnet2"
+
+# 1. Delete EC2 instances created with the tag Name=WPWebServer
+EC2_IDS=$(aws ec2 describe-instances --region $REGION \
+  --filters "Name=tag:Name,Values=WPWebServer" \
+  --query "Reservations[].Instances[?State.Name!='terminated'].InstanceId" --output text)
+if [ -n "$EC2_IDS" ]; then
+  aws ec2 terminate-instances --instance-ids $EC2_IDS --region $REGION
+  aws ec2 wait instance-terminated --instance-ids $EC2_IDS --region $REGION
+fi
+
+# 2. Delete RDS instance
+aws rds delete-db-instance --db-instance-identifier $RDS_INSTANCE_ID --skip-final-snapshot --region $REGION || true
+aws rds wait db-instance-deleted --db-instance-identifier $RDS_INSTANCE_ID --region $REGION || true
+
+# 3. Delete RDS subnet group
+aws rds delete-db-subnet-group --db-subnet-group-name $RDS_SUBNET_GROUP --region $REGION || true
+
+# 4. Find VPC ID by tag
+VPC_ID=$(aws ec2 describe-vpcs --region $REGION \
+  --filters "Name=tag:Name,Values=$VPC_NAME" \
+  --query "Vpcs[0].VpcId" --output text)
+
+if [ "$VPC_ID" != "None" ] && [ -n "$VPC_ID" ]; then
+
+  # 5. Delete NAT gateways
+  NAT_GW_IDS=$(aws ec2 describe-nat-gateways --region $REGION \
+    --filter Name=vpc-id,Values=$VPC_ID \
+    --query "NatGateways[].NatGatewayId" --output text)
+  for NAT_GW_ID in $NAT_GW_IDS; do
+    aws ec2 delete-nat-gateway --nat-gateway-id $NAT_GW_ID --region $REGION || true
+  done
+  for NAT_GW_ID in $NAT_GW_IDS; do
+    while true; do
+      STATUS=$(aws ec2 describe-nat-gateways --nat-gateway-ids $NAT_GW_ID --region $REGION --query "NatGateways[0].State" --output text 2>/dev/null || echo "deleted")
+      [ "$STATUS" = "deleted" ] || [ "$STATUS" = "DELETED" ] && break
+      echo "Waiting for NAT Gateway $NAT_GW_ID to be deleted..."
+      sleep 10
+    done
+  done
+
+  # 6. Delete VPC endpoints
+  ENDPOINT_IDS=$(aws ec2 describe-vpc-endpoints --region $REGION \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "VpcEndpoints[].VpcEndpointId" --output text)
+  for ENDPOINT_ID in $ENDPOINT_IDS; do
+    aws ec2 delete-vpc-endpoints --vpc-endpoint-ids $ENDPOINT_ID --region $REGION || true
+  done
+
+  # 7. Detach and delete internet gateways
+  IGW_IDS=$(aws ec2 describe-internet-gateways --region $REGION \
+    --filters "Name=attachment.vpc-id,Values=$VPC_ID" \
+    --query "InternetGateways[].InternetGatewayId" --output text)
+  for IGW_ID in $IGW_IDS; do
+    aws ec2 detach-internet-gateway --internet-gateway-id $IGW_ID --vpc-id $VPC_ID --region $REGION || true
+    aws ec2 delete-internet-gateway --internet-gateway-id $IGW_ID --region $REGION || true
+  done
+
+  # 8. Delete subnets (created by deploy script)
+  for SUBNET_NAME in $PUBLIC_SUBNET_NAME $PRIVATE_SUBNET_NAME $PRIVATE_SUBNET_NAME2; do
+    SUBNET_ID=$(aws ec2 describe-subnets --region $REGION \
+      --filters "Name=tag:Name,Values=$SUBNET_NAME" "Name=vpc-id,Values=$VPC_ID" \
+      --query "Subnets[0].SubnetId" --output text)
+    if [ "$SUBNET_ID" != "None" ] && [ -n "$SUBNET_ID" ]; then
+      aws ec2 delete-subnet --subnet-id $SUBNET_ID --region $REGION || true
+    fi
+  done
+
+  # 9. Delete non-default security groups created by deploy script
+  for SG_NAME in $RDS_SG_NAME $WEB_SG_NAME; do
+    SG_ID=$(aws ec2 describe-security-groups --region $REGION \
+      --filters "Name=group-name,Values=$SG_NAME" "Name=vpc-id,Values=$VPC_ID" \
+      --query "SecurityGroups[0].GroupId" --output text)
+    if [ "$SG_ID" != "None" ] && [ -n "$SG_ID" ]; then
+      aws ec2 delete-security-group --group-id $SG_ID --region $REGION || true
+    fi
+  done
+
+  # 10. Delete any remaining ENIs
+  ENI_IDS=$(aws ec2 describe-network-interfaces --region $REGION \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "NetworkInterfaces[].NetworkInterfaceId" --output text)
+  for ENI_ID in $ENI_IDS; do
+    aws ec2 delete-network-interface --network-interface-id $ENI_ID --region $REGION || true
+  done
+
+  # Wait for dependencies to clear before deleting route tables
+  echo "Waiting 30 seconds for AWS to clear route table dependencies..."
+  sleep 30
+
+  # 11. Disassociate and delete ALL route tables for the VPC (including main and unassociated)
+  RTB_IDS=$(aws ec2 describe-route-tables --region $REGION \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "RouteTables[].RouteTableId" --output text)
+  for RTB_ID in $RTB_IDS; do
+    ASSOC_IDS=$(aws ec2 describe-route-tables --route-table-ids $RTB_ID --region $REGION \
+      --query "RouteTables[0].Associations[].RouteTableAssociationId" --output text)
+    for ASSOC_ID in $ASSOC_IDS; do
+      IS_MAIN=$(aws ec2 describe-route-tables --route-table-ids $RTB_ID --region $REGION \
+        --query "RouteTables[0].Associations[?RouteTableAssociationId=='$ASSOC_ID'].Main" --output text)
+      if [ "$IS_MAIN" != "True" ]; then
+        aws ec2 disassociate-route-table --association-id $ASSOC_ID --region $REGION || true
+      fi
+    done
+    aws ec2 delete-route-table --route-table-id $RTB_ID --region $REGION || true
+  done
+
+  # 12. Delete the VPC
+  aws ec2 delete-vpc --vpc-id $VPC_ID --region $REGION || true
+fi
+
+echo "Cleanup complete."
