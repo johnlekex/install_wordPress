@@ -1,0 +1,959 @@
+
+Dependency Installed:
+  git-core.x86_64 0:2.47.1-1.amzn2.0.2               git-core-doc.noarch 0:2.47.1-1.amzn2.0.2
+  perl-Error.noarch 1:0.17020-2.amzn2                perl-Git.noarch 0:2.47.1-1.amzn2.0.2
+  perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2
+
+Complete!
+[root@ip-10-0-2-40 ec2-user]# git
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+[root@ip-10-0-2-40 ec2-user]# clear
+[root@ip-10-0-2-40 ec2-user]# git pull https://github.com/johnlekex/install_wordPress.git/installSQL.                                   sh
+fatal: not a git repository (or any of the parent directories): .git
+[root@ip-10-0-2-40 ec2-user]#
+[root@ip-10-0-2-40 ec2-user]# git pull https://github.com/johnlekex/install_wordPress.git
+fatal: not a git repository (or any of the parent directories): .git
+[root@ip-10-0-2-40 ec2-user]# git clone https://github.com/johnlekex/install_wordPress.git
+Cloning into 'install_wordPress'...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 21 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (21/21), 13.05 KiB | 2.61 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+[root@ip-10-0-2-40 ec2-user]# git pull https://github.com/johnlekex/install_wordPress.git
+fatal: not a git repository (or any of the parent directories): .git
+[root@ip-10-0-2-40 ec2-user]# ls
+install_wordPress
+[root@ip-10-0-2-40 ec2-user]# cd install_wordPress/
+[root@ip-10-0-2-40 install_wordPress]# ls
+destroy_install_wordPress  install SQL2  installSQL.sh  install Wordpress_db  README.md
+[root@ip-10-0-2-40 install_wordPress]# chmod +x installSQL.sh
+[root@ip-10-0-2-40 install_wordPress]# ./installSQL.sh
+=== MySQL 8.0 Installation Script ===
+Starting at Thu Jun  5 14:48:24 UTC 2025
+Starting MySQL 8.0 installation process...
+Checking root privileges...
+âœ“ Root privileges confirmed
+Step 1: Removing existing installations...
+=== Removing existing MySQL/MariaDB installations ===
+mysqld not running
+mariadb not running
+mysql not running
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Resolving Dependencies
+--> Running transaction check
+---> Package mariadb-libs.x86_64 1:5.5.68-1.amzn2.0.1 will be erased
+--> Processing Dependency: libmysqlclient.so.18()(64bit) for package: 2:postfix-2.10.1-6.amzn2.0.4.x8                                   6_64
+--> Processing Dependency: libmysqlclient.so.18(libmysqlclient_18)(64bit) for package: 2:postfix-2.10                                   .1-6.amzn2.0.4.x86_64
+--> Running transaction check
+---> Package postfix.x86_64 2:2.10.1-6.amzn2.0.4 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                Arch             Version                           Repository           Size
+=====================================================================================================
+Removing:
+ mariadb-libs           x86_64           1:5.5.68-1.amzn2.0.1              installed           4.4 M
+Removing for dependencies:
+ postfix                x86_64           2:2.10.1-6.amzn2.0.4              installed            12 M
+
+Transaction Summary
+=====================================================================================================
+Remove  1 Package (+1 Dependent package)
+
+Installed size: 16 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : 2:postfix-2.10.1-6.amzn2.0.4.x86_64                                               1/2
+  Erasing    : 1:mariadb-libs-5.5.68-1.amzn2.0.1.x86_64                                          2/2
+  Verifying  : 1:mariadb-libs-5.5.68-1.amzn2.0.1.x86_64                                          1/2
+  Verifying  : 2:postfix-2.10.1-6.amzn2.0.4.x86_64                                               2/2
+
+Removed:
+  mariadb-libs.x86_64 1:5.5.68-1.amzn2.0.1
+
+Dependency Removed:
+  postfix.x86_64 2:2.10.1-6.amzn2.0.4
+
+Complete!
+MariaDB packages removed
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+No Packages marked for removal
+MySQL packages removed
+MySQL data directories removed
+MySQL config files removed
+MySQL config directories removed
+MySQL log files removed
+MySQL share directories removed
+Checking for remaining MySQL/MariaDB processes...
+No MySQL processes found
+No MariaDB processes found
+Cleaning yum cache...
+Cleanup completed successfully
+âœ“ Cleanup completed
+Step 2: Installing prerequisites...
+=== Installing prerequisites ===
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Existing lock /var/run/yum.pid: another copy is running as pid 2675.
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory :  33 M RSS (333 MB VSZ)
+    Started: Thu Jun  5 14:48:26 2025 - 00:02 ago
+    State  : Sleeping, pid: 2675
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory : 133 M RSS (435 MB VSZ)
+    Started: Thu Jun  5 14:48:26 2025 - 00:04 ago
+    State  : Running, pid: 2675
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory : 130 M RSS (431 MB VSZ)
+    Started: Thu Jun  5 14:48:26 2025 - 00:06 ago
+    State  : Running, pid: 2675
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory : 221 M RSS (521 MB VSZ)
+    Started: Thu Jun  5 14:48:26 2025 - 00:08 ago
+    State  : Running, pid: 2675
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory : 223 M RSS (524 MB VSZ)
+    Started: Thu Jun  5 14:48:26 2025 - 00:10 ago
+    State  : Running, pid: 2675
+No packages marked for update
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Package wget-1.14-18.amzn2.1.x86_64 already installed and latest version
+Nothing to do
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Package yum-utils-1.1.31-46.amzn2.0.1.noarch already installed and latest version
+Nothing to do
+Prerequisites installed successfully
+âœ“ Prerequisites installed
+Step 3: Installing MySQL 8.0...
+=== Installing MySQL 8.0 ===
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+No Packages marked for removal
+--2025-06-05 14:48:40--  https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
+Resolving dev.mysql.com (dev.mysql.com)... 23.195.238.233, 2600:1409:9800:1598::2e31, 2600:1409:9800:                                   1596::2e31
+Connecting to dev.mysql.com (dev.mysql.com)|23.195.238.233|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://repo.mysql.com//mysql80-community-release-el7-5.noarch.rpm [following]
+--2025-06-05 14:48:41--  https://repo.mysql.com//mysql80-community-release-el7-5.noarch.rpm
+Resolving repo.mysql.com (repo.mysql.com)... 23.196.159.190, 2600:1409:9800:1396::1d68, 2600:1409:980                                   0:1388::1d68
+Connecting to repo.mysql.com (repo.mysql.com)|23.196.159.190|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10928 (11K) [application/x-redhat-package-manager]
+Saving to: ‘mysql80-community-release-el7-5.noarch.rpm’
+
+100%[===========================================================>] 10,928      --.-K/s   in 0s
+
+2025-06-05 14:48:41 (242 MB/s) - ‘mysql80-community-release-el7-5.noarch.rpm’ saved [10928/10928]
+
+warning: mysql80-community-release-el7-5.noarch.rpm: Header V4 RSA/SHA256 Signature, key ID 3a79bd29:                                    NOKEY
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:mysql80-community-release-el7-5  ################################# [100%]
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Cleaning repos: amzn2-core amzn2extra-docker mysql-connectors-community mysql-tools-community
+              : mysql80-community
+Cleaning up everything
+Maybe you want: rm -rf /var/cache/yum, to also free up space taken by orphaned data from disabled or                                    removed repos
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                    | 3.6 kB  00:00:00
+amzn2extra-docker                                                             | 2.9 kB  00:00:00
+mysql-connectors-community                                                    | 2.6 kB  00:00:00
+mysql-tools-community                                                         | 2.6 kB  00:00:00
+mysql80-community                                                             | 2.6 kB  00:00:00
+(1/18): amzn2-core/2/x86_64/group_gz                                          | 2.7 kB  00:00:00
+(2/18): amzn2-core/2/x86_64/updateinfo                                        | 1.1 MB  00:00:00
+(3/18): amzn2-core/2/x86_64/filelists_db                                      |  71 MB  00:00:01
+(4/18): amzn2-core/2/x86_64/primary_db                                        |  77 MB  00:00:01
+(5/18): amzn2-core/2/x86_64/other_db                                          |  25 MB  00:00:00
+(6/18): amzn2extra-docker/2/x86_64/filelists_db                               |  45 kB  00:00:00
+(7/18): amzn2extra-docker/2/x86_64/updateinfo                                 |  25 kB  00:00:00
+(8/18): amzn2extra-docker/2/x86_64/primary_db                                 | 129 kB  00:00:00
+(9/18): amzn2extra-docker/2/x86_64/other_db                                   |  43 kB  00:00:00
+(10/18): mysql-connectors-community/x86_64/filelists_db                       |  59 kB  00:00:00
+(11/18): mysql-connectors-community/x86_64/primary_db                         | 126 kB  00:00:00
+(12/18): mysql-connectors-community/x86_64/other_db                           |  33 kB  00:00:00
+(13/18): mysql-tools-community/x86_64/primary_db                              | 105 kB  00:00:00
+(14/18): mysql-tools-community/x86_64/other_db                                |  20 kB  00:00:00
+(15/18): mysql80-community/x86_64/primary_db                                  | 331 kB  00:00:00
+(16/18): mysql-tools-community/x86_64/filelists_db                            | 1.0 MB  00:00:00
+(17/18): mysql80-community/x86_64/other_db                                    |  85 kB  00:00:00
+(18/18): mysql80-community/x86_64/filelists_db                                | 3.1 MB  00:00:00
+Metadata Cache Created
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+====================================== repo: mysql57-community ======================================
+[mysql57-community]
+async = True
+bandwidth = 0
+base_persistdir = /var/lib/yum/repos/x86_64/2
+baseurl = http://repo.mysql.com/yum/mysql-5.7-community/el/7/x86_64
+cache = 0
+cachedir = /var/cache/yum/x86_64/2/mysql57-community
+check_config_file_age = True
+compare_providers_priority = 80
+cost = 1000
+deltarpm_metadata_percentage = 100
+deltarpm_percentage =
+enabled = False
+enablegroups = True
+exclude =
+failovermethod = priority
+ftp_disable_epsv = False
+gpgcadir = /var/lib/yum/repos/x86_64/2/mysql57-community/gpgcadir
+gpgcakey =
+gpgcheck = True
+gpgdir = /var/lib/yum/repos/x86_64/2/mysql57-community/gpgdir
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022,
+   file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+hdrdir = /var/cache/yum/x86_64/2/mysql57-community/headers
+http_caching = all
+includepkgs =
+ip_resolve =
+keepalive = True
+keepcache = False
+mddownloadpolicy = sqlite
+mdpolicy = group:small
+mediaid =
+metadata_expire = 21600
+metadata_expire_filter = read-only:present
+metalink =
+minrate = 0
+mirrorlist =
+mirrorlist_expire = 86400
+name = MySQL 5.7 Community Server
+old_base_cache_dir =
+password =
+persistdir = /var/lib/yum/repos/x86_64/2/mysql57-community
+pkgdir = /var/cache/yum/x86_64/2/mysql57-community/packages
+priority = 99
+proxy = False
+proxy_dict =
+proxy_password =
+proxy_username =
+repo_gpgcheck = False
+report_instanceid = False
+retries = 7
+skip_if_unavailable = False
+ssl_check_cert_permissions = True
+sslcacert =
+sslclientcert =
+sslclientkey =
+sslverify = True
+throttle = 0
+timeout = 5.0
+ui_id = mysql57-community/x86_64
+ui_repoid_vars = releasever,
+   basearch
+username =
+
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+====================================== repo: mysql80-community ======================================
+[mysql80-community]
+async = True
+bandwidth = 0
+base_persistdir = /var/lib/yum/repos/x86_64/2
+baseurl = http://repo.mysql.com/yum/mysql-8.0-community/el/7/x86_64
+cache = 0
+cachedir = /var/cache/yum/x86_64/2/mysql80-community
+check_config_file_age = True
+compare_providers_priority = 80
+cost = 1000
+deltarpm_metadata_percentage = 100
+deltarpm_percentage =
+enabled = True
+enablegroups = True
+exclude =
+failovermethod = priority
+ftp_disable_epsv = False
+gpgcadir = /var/lib/yum/repos/x86_64/2/mysql80-community/gpgcadir
+gpgcakey =
+gpgcheck = True
+gpgdir = /var/lib/yum/repos/x86_64/2/mysql80-community/gpgdir
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022,
+   file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+hdrdir = /var/cache/yum/x86_64/2/mysql80-community/headers
+http_caching = all
+includepkgs =
+ip_resolve =
+keepalive = True
+keepcache = False
+mddownloadpolicy = sqlite
+mdpolicy = group:small
+mediaid =
+metadata_expire = 21600
+metadata_expire_filter = read-only:present
+metalink =
+minrate = 0
+mirrorlist =
+mirrorlist_expire = 86400
+name = MySQL 8.0 Community Server
+old_base_cache_dir =
+password =
+persistdir = /var/lib/yum/repos/x86_64/2/mysql80-community
+pkgdir = /var/cache/yum/x86_64/2/mysql80-community/packages
+priority = 99
+proxy = False
+proxy_dict =
+proxy_password =
+proxy_username =
+repo_gpgcheck = False
+report_instanceid = False
+retries = 7
+skip_if_unavailable = False
+ssl_check_cert_permissions = True
+sslcacert =
+sslclientcert =
+sslclientkey =
+sslverify = True
+throttle = 0
+timeout = 5.0
+ui_id = mysql80-community/x86_64
+ui_repoid_vars = releasever,
+   basearch
+username =
+
+=== Fixing MySQL 8.0 GPG Key ===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1944  100  1944    0     0  21034      0 --:--:-- --:--:-- --:--:-- 20903
+GPG key imported successfully
+mysql-connectors-community/x86_64     MySQL Connectors Community          215+64
+mysql-tools-community/x86_64          MySQL Tools Community                  114
+mysql80-community/x86_64              MySQL 8.0 Community Server             560
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+64 packages excluded due to repository priority protections
+Available Packages
+mysql-community-server.x86_64                     8.0.11-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.12-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.13-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.14-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.15-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.16-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.16-2.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.17-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.18-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.19-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.20-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.21-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.22-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.23-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.24-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.25-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.26-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.27-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.28-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.30-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.31-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.32-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.33-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.34-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.35-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.36-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.37-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.39-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.40-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.41-1.el7                      mysql80-community
+mysql-community-server.x86_64                     8.0.42-1.el7                      mysql80-community
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+mysql-connectors-community                                                    | 2.6 kB  00:00:00
+mysql-tools-community                                                         | 2.6 kB  00:00:00
+mysql80-community                                                             | 2.6 kB  00:00:00
+64 packages excluded due to repository priority protections
+Resolving Dependencies
+--> Running transaction check
+---> Package mysql-community-server.x86_64 0:8.0.42-1.el7 will be installed
+--> Processing Dependency: mysql-community-common(x86-64) = 8.0.42-1.el7 for package: mysql-community                                   -server-8.0.42-1.el7.x86_64
+--> Processing Dependency: mysql-community-icu-data-files = 8.0.42-1.el7 for package: mysql-community                                   -server-8.0.42-1.el7.x86_64
+--> Processing Dependency: mysql-community-client(x86-64) >= 8.0.11 for package: mysql-community-serv                                   er-8.0.42-1.el7.x86_64
+--> Running transaction check
+---> Package mysql-community-client.x86_64 0:8.0.42-1.el7 will be installed
+--> Processing Dependency: mysql-community-client-plugins = 8.0.42-1.el7 for package: mysql-community                                   -client-8.0.42-1.el7.x86_64
+--> Processing Dependency: mysql-community-libs(x86-64) >= 8.0.11 for package: mysql-community-client                                   -8.0.42-1.el7.x86_64
+--> Processing Dependency: libncurses.so.5()(64bit) for package: mysql-community-client-8.0.42-1.el7.                                   x86_64
+--> Processing Dependency: libtinfo.so.5()(64bit) for package: mysql-community-client-8.0.42-1.el7.x8                                   6_64
+---> Package mysql-community-common.x86_64 0:8.0.42-1.el7 will be installed
+---> Package mysql-community-icu-data-files.x86_64 0:8.0.42-1.el7 will be installed
+--> Running transaction check
+---> Package mysql-community-client-plugins.x86_64 0:8.0.42-1.el7 will be installed
+---> Package mysql-community-libs.x86_64 0:8.0.42-1.el7 will be installed
+---> Package ncurses-compat-libs.x86_64 0:6.0-8.20170212.amzn2.1.8 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                           Arch      Version                      Repository            Size
+=====================================================================================================
+Installing:
+ mysql-community-server            x86_64    8.0.42-1.el7                 mysql80-community     65 M
+Installing for dependencies:
+ mysql-community-client            x86_64    8.0.42-1.el7                 mysql80-community     16 M
+ mysql-community-client-plugins    x86_64    8.0.42-1.el7                 mysql80-community    3.5 M
+ mysql-community-common            x86_64    8.0.42-1.el7                 mysql80-community    665 k
+ mysql-community-icu-data-files    x86_64    8.0.42-1.el7                 mysql80-community    2.2 M
+ mysql-community-libs              x86_64    8.0.42-1.el7                 mysql80-community    1.5 M
+ ncurses-compat-libs               x86_64    6.0-8.20170212.amzn2.1.8     amzn2-core           309 k
+
+Transaction Summary
+=====================================================================================================
+Install  1 Package (+6 Dependent packages)
+
+Total download size: 89 M
+Installed size: 417 M
+Downloading packages:
+warning: /var/cache/yum/x86_64/2/mysql80-community/packages/mysql-community-client-plugins-8.0.42-1.e                                   l7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID a8d3785c: NOKEY
+Public key for mysql-community-client-plugins-8.0.42-1.el7.x86_64.rpm is not installed
+(1/7): mysql-community-client-plugins-8.0.42-1.el7.x86_64.rpm                 | 3.5 MB  00:00:00
+(2/7): mysql-community-common-8.0.42-1.el7.x86_64.rpm                         | 665 kB  00:00:00
+(3/7): mysql-community-icu-data-files-8.0.42-1.el7.x86_64.rpm                 | 2.2 MB  00:00:00
+(4/7): mysql-community-libs-8.0.42-1.el7.x86_64.rpm                           | 1.5 MB  00:00:00
+(5/7): ncurses-compat-libs-6.0-8.20170212.amzn2.1.8.x86_64.rpm                | 309 kB  00:00:00
+(6/7): mysql-community-client-8.0.42-1.el7.x86_64.rpm                         |  16 MB  00:00:00
+(7/7): mysql-community-server-8.0.42-1.el7.x86_64.rpm                         |  65 MB  00:00:00
+-----------------------------------------------------------------------------------------------------
+Total                                                                110 MB/s |  89 MB  00:00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022
+Importing GPG key 0x3A79BD29:
+ Userid     : "MySQL Release Engineering <mysql-build@oss.oracle.com>"
+ Fingerprint: 859b e8d7 c586 f538 430b 19c2 467b 942d 3a79 bd29
+ Package    : mysql80-community-release-el7-5.noarch (installed)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+
+Public key for mysql-community-libs-8.0.42-1.el7.x86_64.rpm is not installed
+
+
+ Failing package is: mysql-community-libs-8.0.42-1.el7.x86_64
+ GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022, file:///etc/pki/rpm-gpg/                                   RPM-GPG-KEY-mysql
+
+Error: Failed to install MySQL 8.0 server
+Trying alternative installation method...
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+64 packages excluded due to repository priority protections
+Resolving Dependencies
+--> Running transaction check
+---> Package mysql-community-client.x86_64 0:8.0.42-1.el7 will be installed
+--> Processing Dependency: mysql-community-client-plugins = 8.0.42-1.el7 for package: mysql-community                                   -client-8.0.42-1.el7.x86_64
+--> Processing Dependency: mysql-community-libs(x86-64) >= 8.0.11 for package: mysql-community-client                                   -8.0.42-1.el7.x86_64
+--> Processing Dependency: libncurses.so.5()(64bit) for package: mysql-community-client-8.0.42-1.el7.                                   x86_64
+--> Processing Dependency: libtinfo.so.5()(64bit) for package: mysql-community-client-8.0.42-1.el7.x8                                   6_64
+---> Package mysql-community-server.x86_64 0:8.0.42-1.el7 will be installed
+--> Processing Dependency: mysql-community-common(x86-64) = 8.0.42-1.el7 for package: mysql-community                                   -server-8.0.42-1.el7.x86_64
+--> Processing Dependency: mysql-community-icu-data-files = 8.0.42-1.el7 for package: mysql-community                                   -server-8.0.42-1.el7.x86_64
+--> Running transaction check
+---> Package mysql-community-client-plugins.x86_64 0:8.0.42-1.el7 will be installed
+---> Package mysql-community-common.x86_64 0:8.0.42-1.el7 will be installed
+---> Package mysql-community-icu-data-files.x86_64 0:8.0.42-1.el7 will be installed
+---> Package mysql-community-libs.x86_64 0:8.0.42-1.el7 will be installed
+---> Package ncurses-compat-libs.x86_64 0:6.0-8.20170212.amzn2.1.8 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                           Arch      Version                      Repository            Size
+=====================================================================================================
+Installing:
+ mysql-community-client            x86_64    8.0.42-1.el7                 mysql80-community     16 M
+ mysql-community-server            x86_64    8.0.42-1.el7                 mysql80-community     65 M
+Installing for dependencies:
+ mysql-community-client-plugins    x86_64    8.0.42-1.el7                 mysql80-community    3.5 M
+ mysql-community-common            x86_64    8.0.42-1.el7                 mysql80-community    665 k
+ mysql-community-icu-data-files    x86_64    8.0.42-1.el7                 mysql80-community    2.2 M
+ mysql-community-libs              x86_64    8.0.42-1.el7                 mysql80-community    1.5 M
+ ncurses-compat-libs               x86_64    6.0-8.20170212.amzn2.1.8     amzn2-core           309 k
+
+Transaction Summary
+=====================================================================================================
+Install  2 Packages (+5 Dependent packages)
+
+Total size: 89 M
+Installed size: 417 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+  Installing : mysql-community-common-8.0.42-1.el7.x86_64                                        1/7
+  Installing : mysql-community-client-plugins-8.0.42-1.el7.x86_64                                2/7
+  Installing : mysql-community-libs-8.0.42-1.el7.x86_64                                          3/7
+  Installing : ncurses-compat-libs-6.0-8.20170212.amzn2.1.8.x86_64                               4/7
+  Installing : mysql-community-client-8.0.42-1.el7.x86_64                                        5/7
+  Installing : mysql-community-icu-data-files-8.0.42-1.el7.x86_64                                6/7
+  Installing : mysql-community-server-8.0.42-1.el7.x86_64                                        7/7
+  Verifying  : mysql-community-libs-8.0.42-1.el7.x86_64                                          1/7
+  Verifying  : mysql-community-icu-data-files-8.0.42-1.el7.x86_64                                2/7
+  Verifying  : mysql-community-client-8.0.42-1.el7.x86_64                                        3/7
+  Verifying  : ncurses-compat-libs-6.0-8.20170212.amzn2.1.8.x86_64                               4/7
+  Verifying  : mysql-community-server-8.0.42-1.el7.x86_64                                        5/7
+  Verifying  : mysql-community-client-plugins-8.0.42-1.el7.x86_64                                6/7
+  Verifying  : mysql-community-common-8.0.42-1.el7.x86_64                                        7/7
+
+Installed:
+  mysql-community-client.x86_64 0:8.0.42-1.el7      mysql-community-server.x86_64 0:8.0.42-1.el7
+
+Dependency Installed:
+  mysql-community-client-plugins.x86_64 0:8.0.42-1.el7  mysql-community-common.x86_64 0:8.0.42-1.el7
+  mysql-community-icu-data-files.x86_64 0:8.0.42-1.el7  mysql-community-libs.x86_64 0:8.0.42-1.el7
+  ncurses-compat-libs.x86_64 0:6.0-8.20170212.amzn2.1.8
+
+Complete!
+MySQL 8.0 installation completed successfully
+âœ“ MySQL 8.0 installed
+Step 4: Configuring MySQL...
+=== Configuring MySQL 8.0 ===
+Retrieving temporary root password...
+Temporary password retrieved successfully
+Configuring MySQL security settings...
+mysql: [Warning] Using a password on the command line interface can be insecure.
+MySQL configuration completed successfully
+âœ“ MySQL configured
+Step 5: Verifying installation...
+=== Verifying MySQL 8.0 Installation ===
+MySQL version:
+mysql  Ver 8.0.42 for Linux on x86_64 (MySQL Community Server - GPL)
+MySQL service status:
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2025-06-05 14:49:26 UTC; 5s ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+ Main PID: 2904 (mysqld)
+   Status: "Server is operational"
+   CGroup: /system.slice/mysqld.service
+           └─2904 /usr/sbin/mysqld
+
+Jun 05 14:49:18 ip-10-0-2-40.us-west-2.compute.internal systemd[1]: Starting MySQL Server...
+Jun 05 14:49:26 ip-10-0-2-40.us-west-2.compute.internal systemd[1]: Started MySQL Server.
+Testing MySQL connection:
++---------------+
+| MySQL Version |
++---------------+
+| 8.0.42        |
++---------------+
+MySQL connection test successful
+Verification completed
+âœ“ Installation verified
+Step 6: Displaying final information...
+
+==================================================
+=== MySQL 8.0 Installation Complete ===
+==================================================
+Root password: re:St@rt!9
+MySQL service is enabled and will start automatically on boot
+
+Useful commands:
+  Start MySQL:   sudo systemctl start mysqld
+  Stop MySQL:    sudo systemctl stop mysqld
+  Restart MySQL: sudo systemctl restart mysqld
+  Check status:  sudo systemctl status mysqld
+  Connect:       mysql -u root -p
+
+Installation completed at Thu Jun  5 14:49:31 UTC 2025
+==================================================
+âœ“ All steps completed successfully
+Script completed successfully!
+[root@ip-10-0-2-40 install_wordPress]# ^C
+[root@ip-10-0-2-40 install_wordPress]#  mysql -u root -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+[root@ip-10-0-2-40 install_wordPress]#  mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.42 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE AWS
+    -> ^C
+mysql> CREATE DATABASE AWS;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> CREATE TABLE AWS.RESTART
+    -> ^C
+mysql> CREATE TABLE AWS.RESTART;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE TABLE AWS.RESTART (StudentID int, StudentName varchar(255), RestartCity varchar(50), Gr                                   aduationDate date);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW COLUMNS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your M                                   ySQL server version for the right syntax to use near '' at line 1
+mysql> USE AWS
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHIW COLUMNS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your M                                   ySQL server version for the right syntax to use near 'SHIW COLUMNS' at line 1
+mysql> SHOW COLUMNS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your M                                   ySQL server version for the right syntax to use near '' at line 1
+mysql> SHOW COLUMNS RESTART;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your M                                   ySQL server version for the right syntax to use near 'RESTART' at line 1
+mysql> SHOW COLUMNS FROM RESTART;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| StudentID      | int          | YES  |     | NULL    |       |
+| StudentName    | varchar(255) | YES  |     | NULL    |       |
+| RestartCity    | varchar(50)  | YES  |     | NULL    |       |
+| GraduationDate | date         | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> DESCRIBE RESTART
+    -> ^C
+mysql> DESCRIBE RESTART;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| StudentID      | int          | YES  |     | NULL    |       |
+| StudentName    | varchar(255) | YES  |     | NULL    |       |
+| RestartCity    | varchar(50)  | YES  |     | NULL    |       |
+| GraduationDate | date         | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO RESTART (StudentID, StudentName, RestartCity, GraduationDate) VALUES ("1", "MO DEB                                   ISI", "GLASGOW" "2025-08-05");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO RESTART (StudentID, StudentName, RestartCity, GraduationDate) VALUES ("1", "MO DEBISI", "GLASGOW" "2025-08-05");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO RESTART (StudentID, StudentName, RestartCity, GraduationDate) VALUES ('1', 'MO DEBISI', 'GLASGOW' '2025-08-05');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO RESTART (StudentID, StudentName, RestartCity, GraduationDate) VALUES (1, 'MO DEBISI', 'GLASGOW' '2025-08-05');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('1','MO DEBISI','GLASGOW','2025-08-05');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('2','Harvey Leke','GLASGOW','2025-08-05');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('','Ivan Leke','GLASGOW','2025-08-05');
+ERROR 1366 (HY000): Incorrect integer value: '' for column 'StudentID' at row 1
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('1','Ivan Leke','GLASGOW','2025-08-05');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('3','David Collin','GLASGOW','2025-08-05');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('4','Ian Collin','Edinburgh','2025-08-05');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('5','Ade Poju','Edinburgh','2025-08-05');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('6','free jackon','Edinburgh','2^C5-08-05');
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('6','Ade Poju','Edinburgh','2025-08-05'),('7','kud','Glagow','2025-08-05'),('6','free jackon','Edinburgh','2025-08-05');
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM RESTART;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|         1 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> UPDATE StudentName = 'Ivan Leke', SET StudentID='10'
+    -> ^C
+mysql> UPDATE StudentName = 'Ivan Leke', SET StudentID='10';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right s
+mysql> UPDATE StudentName = 'Ivan Leke', SET StudentID='10';^C
+mysql> UPDATE StudentName WHERE StudentName = 'Ivan Leke' SET StudentID='1' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right s
+mysql> UPDATE StudentName WHERE StudentName = 'Ivan Leke' SET StudentID='10' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right s
+mysql> UPDATE StudentName WHERE StudentName = 'Ivan Leke' SET StudentID='10';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right s
+mysql> UPDAT UPDATE StudentName WHERE StudentName = 'Ivan Leke' SET StudentID='10';E StudentName WHERE StudentName = 'Ivan Leke' SET Stu
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right sne 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right s
+mysql> UPDATE StudentName SET StudentID = 10 WHERE StudentName = 'Ivan Leke'
+    -> ^C
+mysql> UPDATE StudentName SET StudentID = 10 WHERE StudentName = 'Ivan Leke';
+ERROR 1146 (42S02): Table 'AWS.StudentName' doesn't exist
+mysql> UPDATE StudentName FROM RESTART SET StudentID = 10 WHERE StudentName = 'Ivan Leke';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM RESTART SET StudentID = 10 WHERE StudentName = 'Ivan Leke'' at line 1
+mysql> CLEARS
+    -> ^C
+mysql> mysql> SELECT * FROM RESTART;
+|         1 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> SELECT * FROM RESTART' at line 1
+mysql> +-----------+---------------+-------------+----------------+
+    -> | StudentID | StudentName   | RestartCity | GraduationDate |
+    -> +-----------+---------------+-------------+----------------+
+    -> |         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+    -> |         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+    -> |         1 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+    -> |         3 | David Collin  | GLASGOW     | 2025-08-05     |
+    -> |         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+    -> |         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+    -> |         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+    -> |         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+    -> |         8 | mody freeland | Edinburgh   | 2025-08-05     |
+    -> |         9 | kash amudu    | Glagow      | 2025-08-05     |
+    -> |         6 | free jackon   | Edinburgh   | 2025-08-05     |
+    -> +-----------+---------------+-------------+----------------+
+    -> mysql> SELECT * FROM RESTART;
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+11 rows ERROR 1064 (42000): in set (0.00 sec)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+-----------+---------------+-------------+----------------+
+| StudentID | Stude' at line 1
+mysql> +-----------+---------------+-------------+----------------+
+    -> | StudentID | StudentName   | RestartCity | GraduationDate |
+    -> +-----------+---------------+-------------+----------------+
+    -> |         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+    -> |         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+    -> |         1 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+    -> |         3 | David Collin  | GLASGOW     | 2025-08-05     |
+    -> |         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+    -> |         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+    -> |         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+    -> |         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+    -> |         8 | mody freeland | Edinburgh   | 2025-08-05     |
+    -> |         9 | kash amudu    | Glagow      | 2025-08-05     |
+    -> |         6 | free jackon   | Edinburgh   | 2025-08-05     |
+    -> +-----------+---------------+-------------+----------------+
+    -> 11 rows in set (0.00 sec)
+    -> ^C
+mysql> UPDATE RESTART
+    -> SET StudentID = 10
+    -> WHERE StudentName = 'Ivan Leke';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM RESTART;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|        10 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> DELETE FROM RESTART
+    -> WHERE StudentName = 'free jackon';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> DELETE FROM RESTART WHERE StudentName = 'free jackon';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM RESTART;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|        10 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM RESTART ORDER BY StudentID
+    -> ^C
+mysql> SELECT * FROM RESTART ORDER BY StudentID;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|        10 | Ivan Leke     | GLASGOW     | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('6','Ade Poju','Edinburgh','2025-08-05'),('7','kudos freeman','Edinburgh','2025-08-05'),('8','mody freeland','Edinburgh','2025-08-05'),('9','kash amudu','Glagow','2025-08-05'),('6','free jackon','Edinburgh','2025-08-05'); INSERT INTO RESTART (StudentID,StudentName,RestartCity,GraduationDate) VALUES ('6','Ade Poju','Edinburgh','2025-08-05'),('7','kudos freeman','Edinburgh','2025-08-05'),('8','mody freeland','Edinburgh','2025-08-05'),('9','kash amudu','Glagow','2025-08-05'),('6','free jackon','Edinburgh','2025-08-05');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> clear
+mysql> SELECT * FROM RESTART;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|        10 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM RESTART;
++-----------+---------------+-------------+----------------+
+| StudentID | StudentName   | RestartCity | GraduationDate |
++-----------+---------------+-------------+----------------+
+|         1 | MO DEBISI     | GLASGOW     | 2025-08-05     |
+|         2 | Harvey Leke   | GLASGOW     | 2025-08-05     |
+|        10 | Ivan Leke     | GLASGOW     | 2025-08-05     |
+|         3 | David Collin  | GLASGOW     | 2025-08-05     |
+|         4 | Ian Collin    | Edinburgh   | 2025-08-05     |
+|         5 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
+|         6 | Ade Poju      | Edinburgh   | 2025-08-05     |
+|         7 | kudos freeman | Edinburgh   | 2025-08-05     |
+|         8 | mody freeland | Edinburgh   | 2025-08-05     |
+|         9 | kash amudu    | Glagow      | 2025-08-05     |
+|         6 | free jackon   | Edinburgh   | 2025-08-05     |
++-----------+---------------+-------------+----------------+
+20 rows in set (0.00 sec)
+
+mysql> CREATE TABLE CLOUD_PRACTITIONER (StudentID int, certification '2025-06-05');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2025-06-05')' at line 1
+mysql> CREATE TABLE CLOUD_PRACTITIONER (StudentID int, certification DATE);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESC CLOUD_PRACTITIONER;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| StudentID     | int  | YES  |     | NULL    |       |
+| certification | date | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
++---------------+------+------+-----+---------+-------+
+mysql> mysql> DESC CLOUD_PRACTITIONER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> DESC CLOUD_PRACTITIONER' at line 1
+mysql> +---------------+------+------+-----+---------+-------+
+    -> | Field         | Type | Null | Key | Default | Extra |
+    -> +---------------+------+------+-----+---------+-------+
+    -> | StudentID     | int  | YES  |     | NULL    |       |
+    -> | certification | date | YES  |     | NULL    |       |
+    -> +---------------+------+------+-----+---------+-------+
+    -> ^C
